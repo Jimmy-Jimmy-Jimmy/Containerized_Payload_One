@@ -1,0 +1,65 @@
+#Containerized_Payload_One
+#Containerized_Payload_One
+#Containerized_Payload_One
+
+
+Jim Byrne
+what is a container in software
+
+In software, a container is a lightweight, standalone executable package that includes everything needed to run an application, including the code, runtime, system tools, libraries, and settings.
+
+Containers provide a way to package and deploy applications consistently across different environments, such as development, testing, and production, without worrying about dependencies or conflicts with other applications on the same system.
+
+Containers are built on top of a host operating system, which provides the necessary resources, such as CPU, memory, and network, to run the containerized application. They can be managed and orchestrated using containerization platforms, such as Docker, Kubernetes, and others.
+
+Using containers has become a popular method for deploying and scaling applications because they are lightweight, portable, and easy to manage. Containers allow developers to develop and test applications in an isolated environment, and deploy them quickly and consistently across different environments.
+Jim Byrne
+Jim Byrne
+could we make a simple container?
+
+Yes, you can create a simple container using containerization tools such as Docker or Podman. Here are the basic steps to create a simple container:
+
+    Create a Dockerfile: This file contains instructions for building your container. The Dockerfile includes commands to install dependencies, copy your application code, and configure your container.
+
+    Build the container image: Run the "docker build" command to build the container image from the Dockerfile. This process creates a snapshot of your container and all its dependencies.
+
+    Run the container: Start the container using the "docker run" command. This will start a new container instance based on the image you created in step 2.
+
+Here is an example Dockerfile that creates a simple container that runs a Python script:
+
+bash
+
+# Use a Python runtime as a parent image
+FROM python:3.8-slim-buster
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed dependencies specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+
+After creating this Dockerfile, you can build the container image by running the following command in the directory containing the Dockerfile:
+
+perl
+
+docker build -t my-container .
+
+This will create a new container image with the name "my-container". You can then run the container using the following command:
+
+css
+
+docker run -p 4000:80 my-container
+
+This will start the container and map port 80 inside the container to port 4000 on your host machine. You can then access the application by visiting http://localhost:4000 in your web browser.
